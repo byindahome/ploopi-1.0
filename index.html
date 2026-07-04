@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"/>
+  <title>Ploopi Mini Games Vol.1 — Play • Learn • Happy</title>
+
+  <meta name="description" content="Ploopi Mini Games Vol.1 — Educational mini-games for toddlers (2-5).">
+  <meta property="og:title" content="Ploopi Mini Games Vol.1" />
+  <meta property="og:description" content="Play • Learn • Happy — Educational mini-games for toddlers." />
+  <meta property="og:image" content="assets/images/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#87d1ff"/>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/favicon.png" sizes="any">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Phaser CDN (global Phaser available) -->
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+</head>
+<body>
+  <div id="game-root" class="phaser-game"></div>
+
+  <!-- Load modules directly for immediate run. Use npm + rollup to create dist/bundle.js for production if desired. -->
+  <script type="module" src="src/main.js"></script>
+
+  <script>
+    // PWA install prompt handling
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      window.dispatchEvent(new CustomEvent('ploopi-beforeinstall', {detail:{prompt: e}}));
+    });
+    // Register service worker
+    if('serviceWorker' in navigator){
+      navigator.serviceWorker.register('service-worker.js').then(()=> console.log('SW registered')).catch(()=> console.log('SW failed'));
+    }
+  </script>
+</body>
+</html>
