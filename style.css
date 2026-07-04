@@ -1,0 +1,39 @@
+:root{
+  --bg-start:#e8f9ff;
+  --bg-end:#fff8ef;
+  --accent:#ffb86b;
+  --primary:#ff7aa2;
+  --muted:#6a8089;
+  --card:#ffffff;
+  --soft-shadow: 0 10px 30px rgba(24,64,71,0.08);
+  --touch-size: 100px;
+  --radius: 22px;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Reset */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg-start),var(--bg-end));color:#16323a}
+#game-root{width:100%;height:100vh;display:flex;align-items:center;justify-content:center;}
+
+/* Canvas container */
+.phaser-game{width:100%;height:100%;max-width:1100px;max-height:820px;position:relative}
+
+/* Buttons and UI */
+.btn-large{
+  width:280px;height:120px;border-radius:34px;background:linear-gradient(180deg,#fff6f8,#ffdedd);box-shadow:var(--soft-shadow);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:36px;color:#2b2b2b;border:none;cursor:pointer;
+}
+.lang-btn{
+  min-height:110px;border-radius:26px;padding:12px 18px;display:flex;align-items:center;gap:12px;background:#ffffff;box-shadow:var(--soft-shadow);cursor:pointer;
+}
+.menu-row{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;gap:18px;pointer-events:auto}
+
+/* Make all interactive items large on touch devices */
+@media (pointer: coarse){
+  .btn-large{width:320px;height:140px;font-size:40px}
+  .lang-btn{min-height:120px;border-radius:28px}
+}
+
+/* Accessibility focus */
+:focus{outline:3px solid rgba(16,112,160,0.12);outline-offset:3px;border-radius:12px}
